@@ -1,27 +1,11 @@
 console.log("puppies")
 
+L.mapbox.accessToken = 'pk.eyJ1IjoicGV0dHljcmltZSIsImEiOiJjaWY0cTBoZDgwbXl0c2RtN2ZjYzhicjZoIn0.FDjxXktw-rA-U-qobjyNxQ';
+var map = L.mapbox.map(document.getElementById('map'), 'mapbox.streets')
+    .setView([-41.29, 174.78], 13);
 
 
-var map;
-function initMap() {
-	var wellington = new google.maps.LatLng(-41.2851928, 174.7851791);
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: wellington,
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.SATELLITE
+var click = document.getElementById('click')
+map.on('click', function(e) {
+	console.log(e.latlng)
 	});
-
-	var heatmapData = heat_it_up();
-
-
-	var heatmap = new google.maps.visualization.HeatmapLayer({
-		data: heatmapData
-	});
-	heatmap.setMap(map);
-
-}
-
-
-var heat_it_up = function(){
-	return [new google.maps.LatLng(-41.2851928, 174.7851791)]
-}
